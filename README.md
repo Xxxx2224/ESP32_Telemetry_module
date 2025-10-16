@@ -113,14 +113,15 @@ Edit the following defines in `main/main.c` or `main/main1.c`:
 #define PASSWORD "***CHANGE_ME***"      // Change to strong password
 ```
 
-> **Security Recommendations**:
+> **⚠️ SECURITY WARNING**:
+> - **You MUST change the placeholder password before deployment!**
 > - Change the default SSID to a unique identifier to avoid conflicts (e.g., "MyDrone_Telemetry")
 > - Replace the placeholder password with a strong password containing at least 12 characters:
 >   - Mix of uppercase and lowercase letters
 >   - Numbers
 >   - Special characters (!@#$%^&*)
 > - Never use default or placeholder passwords in production
-> - Create your own unique password following these requirements
+> - Consider adding compile-time checks to prevent building with default passwords
 
 ### Network Configuration
 - **Default IP Address**: 192.168.4.1
