@@ -59,8 +59,8 @@ The module is designed to work with autopilot systems and flight controllers tha
 
 #### GPS UART (Optional - used in gps.c variant)
 > **Note**: The GPS variant uses swapped TX/RX pins compared to MAVLink. Use `gps.c` implementation when GPS is needed instead of MAVLink communication, or reconfigure pins to avoid conflicts.
-- **TX Pin**: GPIO 5 (conflicts with MAVLink RX)
-- **RX Pin**: GPIO 4 (conflicts with MAVLink TX)
+- **TX Pin**: GPIO 5 (conflicts with MAVLink RX GPIO 5)
+- **RX Pin**: GPIO 4 (conflicts with MAVLink TX GPIO 4)
 - **Baud Rate**: 9600 bps
 
 ## Software Dependencies
@@ -109,18 +109,18 @@ idf.py -p /dev/ttyUSB0 monitor
 ### WiFi Settings
 Edit the following defines in `main/main.c` or `main/main1.c`:
 ```c
-#define SSID "ESP32S3"              // WiFi network name - Change to unique identifier
-#define PASSWORD "YourSecurePass"   // WiFi password - Change to strong password
+#define SSID "ESP32S3"                  // Change to unique identifier
+#define PASSWORD "***CHANGE_ME***"      // Change to strong password
 ```
 
 > **Security Recommendations**:
 > - Change the default SSID to a unique identifier to avoid conflicts (e.g., "MyDrone_Telemetry")
-> - Use a strong password with at least 12 characters including:
->   - Uppercase and lowercase letters
+> - Replace the placeholder password with a strong password containing at least 12 characters:
+>   - Mix of uppercase and lowercase letters
 >   - Numbers
 >   - Special characters (!@#$%^&*)
-> - Never use default or example passwords in production
-> - Example format: `"MyDr0ne!T3l3m#2024"` (create your own unique password)
+> - Never use default or placeholder passwords in production
+> - Create your own unique password following these requirements
 
 ### Network Configuration
 - **Default IP Address**: 192.168.4.1
