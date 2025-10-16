@@ -58,9 +58,9 @@ The module is designed to work with autopilot systems and flight controllers tha
 - **Mode**: RS-485 Half-Duplex
 
 #### GPS UART (Optional - used in gps.c variant)
-> **Note**: The GPS variant uses different pins than MAVLink. Use `gps.c` implementation when GPS is needed instead of MAVLink communication, or reconfigure pins to avoid conflicts.
-- **TX Pin**: GPIO 5
-- **RX Pin**: GPIO 4
+> **Note**: The GPS variant uses swapped TX/RX pins compared to MAVLink. Use `gps.c` implementation when GPS is needed instead of MAVLink communication, or reconfigure pins to avoid conflicts.
+- **TX Pin**: GPIO 5 (conflicts with MAVLink RX)
+- **RX Pin**: GPIO 4 (conflicts with MAVLink TX)
 - **Baud Rate**: 9600 bps
 
 ## Software Dependencies
@@ -109,14 +109,18 @@ idf.py -p /dev/ttyUSB0 monitor
 ### WiFi Settings
 Edit the following defines in `main/main.c` or `main/main1.c`:
 ```c
-#define SSID "ESP32S3"           // WiFi network name - Change to unique identifier
-#define PASSWORD "Esp32Passss"    // WiFi password - Use strong password (min 8 characters)
+#define SSID "ESP32S3"              // WiFi network name - Change to unique identifier
+#define PASSWORD "YourSecurePass"   // WiFi password - Change to strong password
 ```
 
 > **Security Recommendations**:
-> - Change the default SSID to a unique identifier to avoid conflicts
-> - Use a strong password with at least 12 characters including uppercase, lowercase, numbers, and special characters
-> - Example: `#define PASSWORD "MyStr0ng!P@ssw0rd#2024"`
+> - Change the default SSID to a unique identifier to avoid conflicts (e.g., "MyDrone_Telemetry")
+> - Use a strong password with at least 12 characters including:
+>   - Uppercase and lowercase letters
+>   - Numbers
+>   - Special characters (!@#$%^&*)
+> - Never use default or example passwords in production
+> - Example format: `"MyDr0ne!T3l3m#2024"` (create your own unique password)
 
 ### Network Configuration
 - **Default IP Address**: 192.168.4.1
