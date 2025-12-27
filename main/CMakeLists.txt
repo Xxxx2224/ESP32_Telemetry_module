@@ -1,4 +1,4 @@
-idf_component_register(SRCS "main3.c"
+idf_component_register(SRCS "task.c" "Queue1.c" "main3.c"
                     INCLUDE_DIRS "."
                     REQUIRES mavlink)
 
