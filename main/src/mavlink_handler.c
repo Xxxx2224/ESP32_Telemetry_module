@@ -1,6 +1,9 @@
 #include "mavlink_handler.h"
 #include "data_manager.h"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Waddress-of-packed-member"
 #include "common/mavlink.h"
+#pragma GCC diagnostic pop
 #include "esp_log.h"
 
 static const char *TAG = "MAVLINK_HANDLER";
@@ -146,7 +149,7 @@ static void handle_message(const mavlink_message_t *msg) {
         }
 
         default:
-            // ESP_LOGD(TAG, "Unhandled message ID: %d", msg->msgid);
+            ESP_LOGD(TAG, "Unhandled message ID: %d", msg->msgid);
             break;
     }
 }

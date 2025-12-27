@@ -12,19 +12,19 @@ static const char *TAG = "APP_MAIN";
 void app_main(void) {
     ESP_LOGI(TAG, "Starting ESP32 Telemetry Module...");
 
-    // 1. Initialize Data Manager (Mutexes, Shared State)
+    // Initialize Data Manager (Mutexes, Shared State)
     data_manager_init();
 
-    // 2. Initialize Mavlink Handler
+    // Initialize Mavlink Handler
     mavlink_handler_init();
 
-    // 3. Initialize WiFi (SoftAP)
+    // Initialize WiFi (SoftAP)
     wifi_manager_init();
 
-    // 4. Initialize UART (Starts receiving task)
+    // Initialize UART (Starts receiving task)
     uart_manager_init();
 
-    // 5. Initialize TCP Server (Starts listening task)
+    // Initialize TCP Server (Starts listening task)
     tcp_server_init();
 
     ESP_LOGI(TAG, "All modules initialized.");
